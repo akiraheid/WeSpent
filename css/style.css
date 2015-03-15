@@ -1,7 +1,29 @@
 /* ID */
+#button-list{
+  margin-top: 1em;
+}
+
+#controls{
+  overflow: hidden;
+}
+
+#displays{
+  border-right: black 1px solid;
+  float: left;
+  width: 70%;
+}
+
+#hide-title{
+  margin-left: 10%;
+  width: 50%;
+}
+
+#main-content{
+  overflow: hidden;
+}
+
 #participant-table {
   margin: 0 auto;
-  width: 50%;
 }
 
 #timer-display {
@@ -48,10 +70,15 @@
   padding-bottom: .5em;
 }
 
+.checkbox-Text{
+  float:left;
+}
+
 /* Elements */
 
 body {
   background-color: white;
   margin: 0;
   font-family: Tahoma;
+  min-width: 400px;
 }

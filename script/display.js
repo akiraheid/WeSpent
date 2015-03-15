@@ -24,7 +24,7 @@ function toggleDiv(showHideDivID, value)
 // Make
 function uncheckCheckBoxes()
 {
-  var elements = document.getElementsByClassName("toggle");
+  var elements = document.getElementsByClassName("checkbox");
   for(var i = 0; i < elements.length; i++)
   {
     elements[i].checked = false;
