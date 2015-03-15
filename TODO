@@ -1,0 +1,11 @@
+# Things to do #
+* Allow users to leave mid-meeting, but keep the time they were there in the cost.
+* Allow users to join via mobile app.
+  * Allow users to privately enter their salary/hourly wage via mobile app.
+* Set up local network server to allow data transfer.
+* Suggest users don't use real names.
+* Store participant data in local database to see who participates in meetings:
+  1. the most
+  2. the least
+* Have the input table rows always remain in a row. 
+  * Set minimum site width?

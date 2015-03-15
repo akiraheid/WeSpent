@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script/timer.js"></script>
+    <script src="script/display.js"></script>
+  </head>
+  <body>
+    <div class="main-title">We Spent</div>
+    <div id="timer-display" class="hideable">00:00:00</div>
+    <div style="text-align:center;">
+      <span>Hide</span>
+      <input type=checkbox name="toggle-time" onclick="toggleCheckBox(this, 'timer-display')" class="toggle">Time</input>
+      <input type=checkbox name="toggle-cost" class="toggle">Cost</input>
+      <input type=checkbox name="toggle-salaries" class="toggle">Salaries</input>
+    </div>
+    <div style="margin-top:1em; text-align:center;">
+      <button id="start" onclick="startTimer()">Start</button>
+      <button id="stop" onclick="stopTimer()">Stop</button>
+      <button id="restart" onclick="resetTimer()">Reset</button>
+    </div>
+    <div id="participant-table">
+      <div>
+        <span><input type=text class="input-field"></input></span>
+        <span><input type=password class="salary-field"></input></span>
+        <span class="remove">-</span>
+      </div>
+    </div>    
+  </body>
+</html>

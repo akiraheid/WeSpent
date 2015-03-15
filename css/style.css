@@ -1,0 +1,52 @@
+.hideable {
+  display: block;
+}
+
+.main-title {
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.remove {
+  background-color: #E84560;
+  color: white;
+  margin: 0;
+  padding: .5em;
+}
+
+.input-field {
+  width: 60%;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.salary-field {
+  width: 30%;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+#participant-table {
+  margin: 0 auto;
+  width: 50%;
+}
+
+#title {
+  font-size: 4em;
+}
+
+body {
+  background-color: white;
+  margin: 0;
+  font-family: Tahoma;
+}
+
+#timer-display {
+  color: red;
+  font-size: 4em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+  width: 100%;
+}
