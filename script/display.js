@@ -21,13 +21,14 @@ function toggleDiv(showHideDivID, value)
   element.style.display = value;
 }
 
-function displayAllToggles()
+// Make
+function uncheckCheckBoxes()
 {
   var elements = document.getElementsByClassName("toggle");
   for(var i = 0; i < elements.length; i++)
   {
-    elements[i].style.checked = false;
+    elements[i].checked = false;
   }
 }
 
-window.onload = displayAllToggles;
+window.onload = uncheckCheckBoxes;
