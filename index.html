@@ -11,6 +11,7 @@
     <div id="main-content">
       <div id="displays">
         <div id="timer-display" class="hideable">00:00:00</div>
+        <div id="cost-display" class="hideable">$0.00</div>
       </div>
       <div id="controls" style="text-align: center;">
         <div>
@@ -23,10 +24,10 @@
               <input type=checkbox name="toggle-time" onclick="toggleCheckBox(this, 'timer-display')" class="checkbox">Time</input>
               </div>
             <div class="checkbox-Text">
-              <input type=checkbox name="toggle-cost" class="checkbox">Cost</input>
+              <input type=checkbox name="toggle-cost" onclick="toggleCheckBox(this, 'cost-display')" class="checkbox">Cost</input>
             </div>
             <div class="checkbox-Text">
-              <input type=checkbox name="toggle-salaries" class="checkbox">Salaries</input>
+              <input type=checkbox name="toggle-salaries" onclick="toggleCheckBox(this, 'participant-table')" class="checkbox">Salaries</input>
             </div>
           </div>
         </div>
@@ -36,10 +37,13 @@
           <button id="restart" onclick="resetTimer()">Reset</button>
         </div>
         <div id="participant-table">
+          <div>Participants</div>
           <div class="participant-row">
-            <div><input type=text class="input-field"></input></div>
-            <div><input type=password class="salary-field"></input></div>
-            <div class="remove">-</div>
+                <input type=text class="input-field"></input>
+                <input type=password class="salary-field"></input>
+            <div class="remove-wrapper">
+              <div class="remove">-</div>
+            </div>
           </div>
         </div>
       </div>
