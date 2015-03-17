@@ -16,6 +16,84 @@ function toggleCheckBox(checkbox, showHideDivID)
   }
 }
 
+function checkAddRow()
+{
+  console.log("Checking...");
+  var nameFields = document.getElementsByClassName("name-field");
+  var salaryFields = document.getElementsByClassName("salary-field");
+  var allFull = true;
+  
+  for(var i = 0; i < nameFields.length; i++)
+  {
+    if(!nameFields[i].value.match(/\S/))
+    {
+      allFull = false;
+      if(nameFields[i].className.indexOf("error") == -1)
+      {
+        nameFields[i].className = nameFields[i].className + " error";
+      }
+    }
+    else{
+      nameFields[i].className = nameFields[i].className.replace(" error", "");
+    }
+    
+    if(!salaryFields[i].value.match(/\S/))
+    {
+      allFull = false;
+      if(salaryFields[i].className.indexOf("error") == -1)
+      {
+        salaryFields[i].className = salaryFields[i].className + " error";
+      }
+    }
+    else
+    {
+      salaryFields[i].className = salaryFields[i].className.replace(" error", "");
+    }
+  }
+  
+  if(allFull)
+  {
+    addParticipantRow();
+    updateListeners();
+  }
+}
+
+function updateListeners()
+{
+  var nameFields = document.getElementsByClassName("name-field");
+  var salaryFields = document.getElementsByClassName("salary-field");
+  if(nameFields.length > 0)
+  {
+    if(nameFields[0].addEventListener)
+    { // All browsers, IE9+
+      for(var i = 0; i < nameFields.length; i++)
+      {
+        nameFields[i].addEventListener("input",
+          function(){
+            checkAddRow()
+          }, false);
+        salaryFields[i].addEventListener("input",
+          function(){
+            checkAddRow()
+          }, false);
+      }
+    }
+    else if(nameFields[0].attachEvent){ // IE8-
+      for(var i = 0; i < nameFields.length; i++)
+      {
+        nameFields[i].addEventListener("input",
+          function(){
+            checkAddRow()
+          });
+        salaryFields[i].addEventListener("input",
+          function(){
+            checkAddRow()
+          });
+      }
+    }
+  }
+}
+
 // Uncheck all of the checkboxes.
 function uncheckCheckBoxes()
 {
@@ -35,7 +113,7 @@ function addParticipantRow()
   var num = ++numi.value;
   newRow.setAttribute('class', "participant-row");
   newRow.setAttribute('id', "row" + num);
-  newRow.innerHTML = "<input type=text class=\"input-field\"></input> \
+  newRow.innerHTML = "<input type=text class=\"name-field\"></input> \
                   <input type=password class=\"salary-field\"></input> \
               <div class=\"remove-wrapper\" onclick=\"removeParticipantRow("+num+")\"> \
                 <div class=\"remove\">-</div> \
@@ -69,6 +147,7 @@ function removeParticipantRow(rowNum)
 // Function to initialize the page.
 function init(){
   uncheckCheckBoxes();
+  updateListeners();
 }
 
 window.onload = init;

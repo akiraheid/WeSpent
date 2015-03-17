@@ -58,17 +58,21 @@
   display: block;
 }
 
-.input-field {
-  float: left;
-  height: 100%;
-  margin: 0;
-  width: 55%;
+.error-input {
+  border: 2px solid red;
 }
 
 .main-title {
   margin: 0;
   text-align: center;
   width: 100%;
+}
+
+.name-field {
+  float: left;
+  height: 100%;
+  margin: 0;
+  width: 55%;
 }
 
 .participant-row {
