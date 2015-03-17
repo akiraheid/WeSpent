@@ -4,7 +4,7 @@
 }
 
 #controls{
-  min-width: 29%;
+  min-width: 100px;
   overflow: hidden;
 }
 
@@ -33,7 +33,7 @@
 }
 
 #participant-table {
-  margin: 0 auto;
+  margin: 1%;
 }
 
 #timer-display {
@@ -50,6 +50,9 @@
 }
 
 /* Class */
+.checkbox-Text{
+  float:left;
+}
 
 .hideable {
   display: block;
@@ -70,12 +73,18 @@
 
 .participant-row {
   height: 1.5em;
-  margin: 1%;
 }
 
 .remove {
   background-color: #E84560;
+  border: grey 1px solid;
   color: white;
+}
+
+.remove-no {
+  background-color: #E8959C;
+  border: grey 1px solid;
+  color: grey;
 }
 
 .remove-wrapper {
@@ -92,15 +101,11 @@
   width: 30%;
 }
 
-.checkbox-Text{
-  float:left;
-}
-
 /* Elements */
 
 body {
   background-color: white;
   margin: 0;
   font-family: Tahoma;
-  min-width: 400px;
+  min-width: 300px;
 }
