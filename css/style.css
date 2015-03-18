@@ -3,6 +3,11 @@
   margin-top: 1em;
 }
 
+#checkbox-list {
+  margin-left: 20%;
+  overflow: hidden;
+}
+
 #controls{
   min-width: 100px;
   overflow: hidden;
@@ -50,7 +55,7 @@
 }
 
 /* Class */
-.checkbox-Text{
+.checkbox-text{
   float:left;
 }
 

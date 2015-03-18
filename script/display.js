@@ -18,7 +18,6 @@ function toggleCheckBox(checkbox, showHideDivID)
 
 function checkAddRow()
 {
-  console.log("Checking...");
   var nameFields = document.getElementsByClassName("name-field");
   var salaryFields = document.getElementsByClassName("salary-field");
   var allFull = true;
@@ -33,7 +32,8 @@ function checkAddRow()
         nameFields[i].className = nameFields[i].className + " error";
       }
     }
-    else{
+    else
+    {
       nameFields[i].className = nameFields[i].className.replace(" error", "");
     }
     
@@ -54,11 +54,11 @@ function checkAddRow()
   if(allFull)
   {
     addParticipantRow();
-    updateListeners();
+    updateParticipantListeners();
   }
 }
 
-function updateListeners()
+function updateParticipantListeners()
 {
   var nameFields = document.getElementsByClassName("name-field");
   var salaryFields = document.getElementsByClassName("salary-field");
@@ -78,7 +78,8 @@ function updateListeners()
           }, false);
       }
     }
-    else if(nameFields[0].attachEvent){ // IE8-
+    else if(nameFields[0].attachEvent)
+    { // IE8-
       for(var i = 0; i < nameFields.length; i++)
       {
         nameFields[i].addEventListener("input",
@@ -114,7 +115,7 @@ function addParticipantRow()
   newRow.setAttribute('class', "participant-row");
   newRow.setAttribute('id', "row" + num);
   newRow.innerHTML = "<input type=text class=\"name-field\"></input> \
-                  <input type=password class=\"salary-field\"></input> \
+                  <input type=number class=\"salary-field\"></input> \
               <div class=\"remove-wrapper\" onclick=\"removeParticipantRow("+num+")\"> \
                 <div class=\"remove\">-</div> \
               </div>";
@@ -140,14 +141,58 @@ function removeParticipantRow(rowNum)
     document.getElementById('participant-rows').removeChild(
         document.getElementById("row"+rowNum) ); 
     if(rows.length == 1)
+    {
       document.getElementsByClassName("remove")[0].setAttribute('class', "remove-no");
+    }
   }
+}
+
+// Start button is clicked
+function startClicked()
+{
+  startTimer();
+}
+
+function resetClicked()
+{
+  resetTimer();
+  updateCostDisplay();
+}
+
+// Update the cost display.
+function updateCostDisplay()
+{
+  // We're only going to accumulate total salary from rows that have
+  // the name AND salary field filled.
+  var totalSecondsSalary = 0;
+  
+  var nameFields = document.getElementsByClassName("name-field");
+  var salaryFields = document.getElementsByClassName("salary-field");
+  if(nameFields.length > 0)
+  {
+    for(var i = 0; i < nameFields.length; i++)
+    {
+      if(nameFields[i].value.match(/\S/) && salaryFields[i].value.match(/\S/))
+      {
+        totalSecondsSalary += (salaryFields[i].value / 31449600);
+      }
+    }
+  }
+  document.getElementById("cost-display").innerHTML =
+      "$" + (seconds * totalSecondsSalary).toFixed(2);
+}
+
+// Create the timerEvent listener so we know when to update the cost.
+function createTimerListener()
+{
+  document.addEventListener("timerEvent", updateCostDisplay, false);
 }
 
 // Function to initialize the page.
 function init(){
   uncheckCheckBoxes();
-  updateListeners();
+  updateParticipantListeners();
+  createTimerListener();
 }
 
 window.onload = init;

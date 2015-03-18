@@ -19,32 +19,31 @@
             Hide
             <hr>
           </div>
-          <div>
-            <div class="checkbox-Text">
+          <div id="checkbox-list">
+            <div class="checkbox-text">
               <input type=checkbox name="toggle-time" onclick="toggleCheckBox(this, 'timer-display')" class="checkbox">Time</input>
               </div>
-            <div class="checkbox-Text">
+            <div class="checkbox-text">
               <input type=checkbox name="toggle-cost" onclick="toggleCheckBox(this, 'cost-display')" class="checkbox">Cost</input>
             </div>
-            <div class="checkbox-Text">
+            <div class="checkbox-text">
               <input type=checkbox name="toggle-participants" onclick="toggleCheckBox(this, 'participant-table')" class="checkbox">Participants</input>
             </div>
+            
           </div>
         </div>
-        <div>
-          <div id="button-list">
-            <button id="start" onclick="startTimer()">Start</button>
-            <button id="stop" onclick="stopTimer()">Stop</button>
-            <button id="restart" onclick="resetTimer()">Reset</button>
-          </div>
-        <div>
+        <div id="button-list">
+          <button id="start" onclick="startClicked()">Start</button>
+          <button id="stop" onclick="stopTimer()">Stop</button>
+          <button id="restart" onclick="resetClicked()">Reset</button>
+        </div>
         <div id="participant-table">
           <div>Participants</div>
           <input type="hidden" value="0" id="theValue"></input>
           <div id="participant-rows">
             <div class="participant-row" id="row0">
               <input type=text class="name-field"></input>
-              <input type=password class="salary-field"></input>
+              <input type=number class="salary-field"></input>
               <div class="remove-wrapper" onclick="removeParticipantRow(0)">
                 <div class="remove-no">-</div>
               </div>

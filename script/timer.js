@@ -1,6 +1,17 @@
 var seconds = 0;
 var timerID = -1;
 var started = false;
+var timerEvent = new CustomEvent(
+  "timerEvent",
+  {
+    detail: {
+      message: "timer fired",
+      time: new Date(),
+    },
+    bubbles: true,
+    cancelable: true
+  }
+);
 
 function updateTimerDisplay()
 {
@@ -13,6 +24,7 @@ function updateTimer()
 {
   seconds++;
   updateTimerDisplay();
+  document.getElementById("timer-display").dispatchEvent(timerEvent);
   timerID = setTimeout('updateTimer()', 1000);
 }
 
