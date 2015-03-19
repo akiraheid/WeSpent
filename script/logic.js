@@ -1,4 +1,4 @@
-// This script file is for handling the display aspect of WeSpent
+// This script file is for handling the logic aspect of WeSpent
 
 // Toggle the visibility of a div.
 //
