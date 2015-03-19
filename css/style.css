@@ -4,7 +4,6 @@
 }
 
 #checkbox-list {
-  margin-left: 20%;
   overflow: hidden;
 }
 
@@ -28,8 +27,12 @@
   width: 69%; /*hehe*/
 }
 
-#hide-title{
+#hide-group{
   margin-left: 10%;
+  margin-right: 0 auto;
+}
+
+#hide-title{
   width: 50%;
 }
 
@@ -116,5 +119,5 @@ body {
   background-color: white;
   margin: 0;
   font-family: Tahoma;
-  min-width: 300px;
+  min-width: 800px;
 }
