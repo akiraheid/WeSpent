@@ -16,6 +16,8 @@ function toggleCheckBox(checkbox, showHideDivID)
   }
 }
 
+// Check whether or not we should add another participant row. If we've filled
+// all the available rows (both name and salary fields), then add another row.
 function checkAddRow()
 {
   var nameFields = document.getElementsByClassName("name-field");
@@ -54,43 +56,38 @@ function checkAddRow()
   if(allFull)
   {
     addParticipantRow();
-    updateParticipantListeners();
   }
 }
 
-function updateParticipantListeners()
+// Add listeners to the name and salary fields.
+//
+// nameField    The name field to add a listener to.
+// salaryField  The salary field to add a listener to.
+function addParticipantListener(nameField, salaryField)
 {
-  var nameFields = document.getElementsByClassName("name-field");
-  var salaryFields = document.getElementsByClassName("salary-field");
-  if(nameFields.length > 0)
+  if(nameField != null && salaryField != null)
   {
-    if(nameFields[0].addEventListener)
+    if(nameField.addEventListener && salaryField.addEventListener)
     { // All browsers, IE9+
-      for(var i = 0; i < nameFields.length; i++)
-      {
-        nameFields[i].addEventListener("input",
-          function(){
-            checkAddRow()
-          }, false);
-        salaryFields[i].addEventListener("input",
-          function(){
-            checkAddRow()
-          }, false);
-      }
+      nameField.addEventListener("input",
+        function(){
+          checkAddRow()
+        }, false);
+      salaryField.addEventListener("input",
+        function(){
+          checkAddRow()
+        }, false);
     }
-    else if(nameFields[0].attachEvent)
+    else if(nameField.attachEvent && salaryField.attachEvent)
     { // IE8-
-      for(var i = 0; i < nameFields.length; i++)
-      {
-        nameFields[i].addEventListener("input",
-          function(){
-            checkAddRow()
-          });
-        salaryFields[i].addEventListener("input",
-          function(){
-            checkAddRow()
-          });
-      }
+      nameField.addEventListener("input",
+        function(){
+          checkAddRow()
+        });
+      salaryField.addEventListener("input",
+        function(){
+          checkAddRow()
+        });
     }
   }
 }
@@ -119,11 +116,15 @@ function addParticipantRow()
               <div class=\"remove-wrapper\" onclick=\"removeParticipantRow("+num+")\"> \
                 <div class=\"remove\">-</div> \
               </div>";
+              
+  // Add listeners to the newly created fields.
+  addParticipantListener(newRow.children[0], newRow.children[1]);
+  
   ni.appendChild(newRow);
   
   // Since we've added a row, we can allow other rows to be deleted with the
   // remove button.
-  if(document.getElementsByClassName("participant-row").length == 2)
+  if(document.getElementsByClassName("participant-row").length > 1)
   {
     document.getElementsByClassName("remove-no")[0].setAttribute('class', "remove");
   }
@@ -191,7 +192,8 @@ function createTimerListener()
 // Function to initialize the page.
 function init(){
   uncheckCheckBoxes();
-  updateParticipantListeners();
+  addParticipantListener(document.getElementsByClassName("name-field")[0],
+      document.getElementsByClassName("salary-field")[0]);
   createTimerListener();
 }
 
