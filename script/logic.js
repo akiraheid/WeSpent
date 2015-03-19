@@ -1,5 +1,11 @@
 // This script file is for handling the logic aspect of WeSpent
 
+// Our global variables =======================================================
+
+// The total amount spent so far.
+var totalSpent = 0;
+// ============================================================================
+
 // Toggle the visibility of a div.
 //
 // checkbox       The checkbox that was checked.
@@ -157,6 +163,7 @@ function startClicked()
 function resetClicked()
 {
   resetTimer();
+  totalSpent = 0;
   updateCostDisplay();
 }
 
@@ -165,22 +172,29 @@ function updateCostDisplay()
 {
   // We're only going to accumulate total salary from rows that have
   // the name AND salary field filled.
-  var totalSecondsSalary = 0;
+  // We also know that the timer sets off an event every second, so we can use
+  // that to simply add on the cost of this second to the grand (global) total.
+  // This allows us to keep track of the total cost of the meeting, even when
+  // people come and go.
   
+  var spentThisSecond = 0;
   var nameFields = document.getElementsByClassName("name-field");
   var salaryFields = document.getElementsByClassName("salary-field");
+  
   if(nameFields.length > 0)
   {
     for(var i = 0; i < nameFields.length; i++)
     {
       if(nameFields[i].value.match(/\S/) && salaryFields[i].value.match(/\S/))
       {
-        totalSecondsSalary += (salaryFields[i].value / 31449600);
+        spentThisSecond += (salaryFields[i].value / 31449600);
       }
-    }
+    }    
   }
+  totalSpent += spentThisSecond;
+  
   document.getElementById("cost-display").innerHTML =
-      "$" + (seconds * totalSecondsSalary).toFixed(2);
+    "$" + totalSpent.toFixed(2);
 }
 
 // Create the timerEvent listener so we know when to update the cost.
