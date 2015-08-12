@@ -1,16 +1,4 @@
 /* ID */
-#button-list{
-  margin-top: 1em;
-}
-
-#checkbox-list {
-  overflow: hidden;
-}
-
-#controls{
-  min-width: 100px;
-  overflow: hidden;
-}
 
 #cost-display{
   color: green;
@@ -21,28 +9,6 @@
   width: 100%;
 }
 
-#displays{
-  border-right: black 1px solid;
-  float: left;
-  width: 69%; /*hehe*/
-}
-
-#hide-group{
-  margin-left: 10%;
-  margin-right: 0 auto;
-}
-
-#hide-title{
-  width: 50%;
-}
-
-#main-content{
-  overflow: hidden;
-}
-
-#participant-table {
-  margin: 1%;
-}
 
 #timer-display {
   color: red;
@@ -53,73 +19,10 @@
   width: 100%;
 }
 
-#title {
-  font-size: 4em;
-}
-
-/* Class */
-.checkbox-text{
-  float:left;
-}
-
-.hideable {
-  display: block;
-}
-
-.error-input {
-  border: 2px solid red;
-}
-
-.main-title {
-  margin: 0;
-  text-align: center;
-  width: 100%;
-}
-
-.name-field {
-  float: left;
-  height: 100%;
-  margin: 0;
-  width: 55%;
-}
-
-.participant-row {
-  height: 1.5em;
-}
-
-.remove {
-  background-color: #E84560;
-  border: grey 1px solid;
-  color: white;
-}
-
-.remove-no {
-  background-color: #E8959C;
-  border: grey 1px solid;
-  color: grey;
-}
-
-.remove-wrapper {
-  float: left;
-  font-size: 1.5em;
-  height: 100%;
-  margin: 0;
-  width: 10%;
-}
-
-.salary-field {
-  height: 100%;
-  float: left;
-  width: 30%;
-}
-
 /* Elements */
 
 body {
-  background-color: white;
-  margin: 0;
-  font-family: Tahoma;
-  min-width: 800px;
+  padding-top: 80px;
 }
 
 /* FONTS */
@@ -138,4 +41,28 @@ body {
     font-size: 300%;
     color: #A4BD99;
     text-shadow: #065C27 2px 2px;
+}
+
+.form-control {
+    padding:10px;
+}
+
+#input-dynamic input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    height: 28px;
+}
+#input-dynamic input[type=number] {
+    width: 100%;
+    box-sizing: border-box;
+    height: 28px;
+}
+#input-dynamic button {
+    width: 100%;
+    box-sizing: border-box;
+    height: 28px;
+}
+.form-col {
+    padding-right: 2px;
+    padding-left: 2px;
 }
