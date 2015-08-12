@@ -6,22 +6,6 @@
 var totalSpent = 0;
 // ============================================================================
 
-// Toggle the visibility of a div.
-//
-// checkbox       The checkbox that was checked.
-// showHideDivID  The id of the div to toggle the visibility of.
-function toggleCheckBox(checkbox, showHideDivID)
-{
-  if(!checkbox.checked)
-  {
-    document.getElementById(showHideDivID).style.display = "block";
-  }
-  else
-  {
-    document.getElementById(showHideDivID).style.display = "none";
-  }
-}
-
 // Check whether or not we should add another participant row. If we've filled
 // all the available rows (both name and salary fields), then add another row.
 function checkAddRow()
@@ -98,33 +82,20 @@ function addParticipantListener(nameField, salaryField)
   }
 }
 
-// Uncheck all of the checkboxes.
-function uncheckCheckBoxes()
-{
-  var elements = document.getElementsByClassName("checkbox");
-  for(var i = 0; i < elements.length; i++)
-  {
-    elements[i].checked = false;
-  }
-}
-
 // Add a participant row to the participant table.
 function addParticipantRow()
 {
-  var ni = document.getElementById('participant-rows');
+  var ni = document.getElementById('participant-table');
   var numi = document.getElementById('theValue');
   var newRow = document.createElement('div');
   var num = ++numi.value;
-  newRow.setAttribute('class', "participant-row");
+  newRow.setAttribute('class', "form-group");
   newRow.setAttribute('id', "row" + num);
-  newRow.innerHTML = "<input type=text class=\"name-field\"></input> \
-                  <input type=number class=\"salary-field\"></input> \
-              <div class=\"remove-wrapper\" onclick=\"removeParticipantRow("+num+")\"> \
-                <div class=\"remove\">-</div> \
-              </div>";
+
+  newRow.innerHTML = '                <div class="row">\n                  <div class="col-xs-6">\n                    <input id=\"textinput\" name=\"textinput\" type=\"text\" class=\"form-control input-md name-field\" placeholder=\"Name\"><\/div>\n                    <div class=\"col-xs-6\"><div class=\"input-group\"> <span class=\"input-group-addon\">$<\/span>\n                      <input id=\"prependedtext\" name=\"prependedtext\" class=\"form-control salary-field\" placeholder=\"Salary\" type=\"text\"> \n                      <span class=\"input-group-btn\">\n                        <button class=\"btn btn-danger\" type=\"button\" onclick=\"removeParticipantRow('+num+')\">-<\/button>\n                      <\/span>\n                    <\/div>\n                  <\/div>\n                <\/div>';
               
   // Add listeners to the newly created fields.
-  addParticipantListener(newRow.children[0], newRow.children[1]);
+  addParticipantListener(newRow.children[0].children[0].children[0], newRow.children[0].children[1].children[0].children[1]);
   
   ni.appendChild(newRow);
   
@@ -142,11 +113,12 @@ function addParticipantRow()
 // rowNum  The row ID number to delete.
 function removeParticipantRow(rowNum)
 {
-  var rows = document.getElementsByClassName("participant-row");
+  console.log("Row is " + rowNum)
+  var rows = document.getElementsByClassName("form-group");
   if(rows.length != 1)
   {
-    document.getElementById('participant-rows').removeChild(
-        document.getElementById("row"+rowNum) ); 
+    document.getElementById('participant-table').removeChild(document.getElementById("row"+rowNum) ); 
+    
     if(rows.length == 1)
     {
       document.getElementsByClassName("remove")[0].setAttribute('class', "remove-no");
@@ -205,7 +177,6 @@ function createTimerListener()
 
 // Function to initialize the page.
 function init(){
-  uncheckCheckBoxes();
   addParticipantListener(document.getElementsByClassName("name-field")[0],
       document.getElementsByClassName("salary-field")[0]);
   createTimerListener();

@@ -5,6 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">   <!-- Bootstrap Stylesheet -->
+    <link href="bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/style.css">
 
     <script src="script/timer.js"></script>
@@ -14,51 +15,50 @@
   <body>
 
     <nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-header">WeSpent!</div>
+      <div class="container">
+        <div class="navbar-header">WeSpent!</div>
+      </div>
     </nav>
 
-    <div id="main-content">
-      <div id="displays">
-        <div id="timer-display" class="hideable">00:00:00</div>
-        <div id="cost-display" class="hideable">$0.00</div>
-      </div>
-      <div id="controls" style="text-align: center;">
-        <div id="hide-group">
-          <div id="hide-title">
-            Hide
-            <hr>
-          </div>
-          <div id="checkbox-list">
-            <div class="checkbox-text">
-              <input type=checkbox name="toggle-time" onclick="toggleCheckBox(this, 'timer-display')" class="checkbox">Time</input>
-              </div>
-            <div class="checkbox-text">
-              <input type=checkbox name="toggle-cost" onclick="toggleCheckBox(this, 'cost-display')" class="checkbox">Cost</input>
-            </div>
-            <div class="checkbox-text">
-              <input type=checkbox name="toggle-participants" onclick="toggleCheckBox(this, 'participant-table')" class="checkbox">Participants</input>
-            </div>
+    <div class="container">
+      <div class="row">
 
+        <div class="col-sm-6 col-xs-12" id="display">
+          <div class="well">
+            <div id="timer-display">00:00:00</div>
+            <div id="cost-display">$0.00</div>
+          </div>
+          <div id="button-list" class="well text-center">
+            <button id="start" class="btn btn-primary btn-lg" onclick="startClicked()"><i title="Start" class="fa fa-play"> Start</i></button>
+            <button id="stop" class="btn btn-info btn-lg" onclick="stopTimer()"><i title="Pause" class="fa fa-pause"> Pause</i></button>
+            <button id="restart" class="btn btn-danger btn-lg" onclick="resetClicked()"><i title="Reset" class="fa fa-refresh"> Reset</i></button>
           </div>
         </div>
-        <div id="button-list">
-          <button id="start" onclick="startClicked()">Start</button>
-          <button id="stop" onclick="stopTimer()">Stop</button>
-          <button id="restart" onclick="resetClicked()">Reset</button>
-        </div>
-        <div id="participant-table">
-          <div>Participants</div>
-          <input type="hidden" value="0" id="theValue"></input>
-          <div id="participant-rows">
-            <div class="participant-row" id="row0">
-              <input type=text class="name-field"></input>
-              <input type=number class="salary-field"></input>
-              <div class="remove-wrapper" onclick="removeParticipantRow(0)">
-                <div class="remove-no">-</div>
+
+
+        <div class="col-sm-6 col-xs-12 text-center">
+          <div class="well">
+            <h3>Participants</h3>
+            <form class="form-inline" id="participant-table">
+              <input type="hidden" value="0" id="theValue"></input>
+              <div class="form-group" id="row0">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <input id="textinput" name="textinput" type="text" class="form-control input-md name-field" placeholder="Name"></div>
+                    <div class="col-xs-6"><div class="input-group"> <span class="input-group-addon">$</span>
+                      <input id="prependedtext" name="prependedtext" class="form-control salary-field" placeholder="Salary" type="text">
+                      <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button" onclick="removeParticipantRow(0)">-</button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
               </div>
-            </div>
+            </form>
           </div>
         </div>
+
       </div>
     </div>
 
