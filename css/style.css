@@ -121,3 +121,21 @@ body {
   font-family: Tahoma;
   min-width: 800px;
 }
+
+/* FONTS */
+@font-face { font-family: Lobster; src: url('../fonts/Lobster-1.4.otf') format("opentype"); } 
+
+/* BOOTSTRAP OVERRIDE */
+/* Settings for text logo in navbar */
+.navbar-header {
+    /* Position Text */
+    float: left;
+    text-align: center;
+    width: 100%;
+
+    /* Stylize Text */
+    font-family: Lobster;
+    font-size: 300%;
+    color: #A4BD99;
+    text-shadow: #065C27 2px 2px;
+}
