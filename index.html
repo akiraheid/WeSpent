@@ -15,12 +15,12 @@
   <body>
     
     <nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">WeSpent!</div>
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container" id="wrap">
       <div class="row">
 
         <div class="col-sm-6 col-xs-12" id="display">
@@ -45,20 +45,26 @@
                 <div class="row">
                   <div class="col-xs-6">
                     <input id="textinput" name="textinput" type="text" class="form-control input-md name-field" placeholder="Name"></div>
-                    <div class="col-xs-6"><div class="input-group"> <span class="input-group-addon">$</span>
-                      <input id="prependedtext" name="prependedtext" class="form-control salary-field" placeholder="Salary" type="text"> 
+                    <div class="col-xs-6"><div class="input-group"> 
+                      <span class="input-group-addon">$</span>
+                      <input id="prependedtext" name="prependedtext" class="form-control salary-field" placeholder="Salary" type="password"> 
                       <span class="input-group-btn">
                         <button class="btn btn-danger" type="button" onclick="removeParticipantRow(0)">-</button>
                       </span>
                     </div>
                   </div>
                 </div>
-
               </div>
             </form>
           </div>
         </div>
 
+      </div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <h5>Masterfully crafted by <a href="http://github.com/akiraheid">Michael Heid</a> and <a href="http://github.com/kfriede">Kevin Friedemann</a></h5>
       </div>
     </div>
 
