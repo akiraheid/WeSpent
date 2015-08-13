@@ -13,7 +13,7 @@ function checkAddRow()
   var nameFields = document.getElementsByClassName("name-field");
   var salaryFields = document.getElementsByClassName("salary-field");
   var allFull = true;
-  
+
   for(var i = 0; i < nameFields.length; i++)
   {
     if(!nameFields[i].value.match(/\S/))
@@ -28,7 +28,7 @@ function checkAddRow()
     {
       nameFields[i].className = nameFields[i].className.replace(" error", "");
     }
-    
+
     if(!salaryFields[i].value.match(/\S/))
     {
       allFull = false;
@@ -42,7 +42,7 @@ function checkAddRow()
       salaryFields[i].className = salaryFields[i].className.replace(" error", "");
     }
   }
-  
+
   if(allFull)
   {
     addParticipantRow();
@@ -92,13 +92,13 @@ function addParticipantRow()
   newRow.setAttribute('class', "form-group");
   newRow.setAttribute('id', "row" + num);
 
-  newRow.innerHTML = '                <div class="row">\n                  <div class="col-xs-6">\n                    <input id=\"textinput\" name=\"textinput\" type=\"text\" class=\"form-control input-md name-field\" placeholder=\"Name\"><\/div>\n                    <div class=\"col-xs-6\"><div class=\"input-group\"> <span class=\"input-group-addon\">$<\/span>\n                      <input id=\"prependedtext\" name=\"prependedtext\" class=\"form-control salary-field\" placeholder=\"Salary\" type=\"text\"> \n                      <span class=\"input-group-btn\">\n                        <button class=\"btn btn-danger\" type=\"button\" onclick=\"removeParticipantRow('+num+')\">-<\/button>\n                      <\/span>\n                    <\/div>\n                  <\/div>\n                <\/div>';
-              
+  newRow.innerHTML = '                <div class="row">\n                  <div class="col-xs-6">\n                    <input id=\"textinput\" name=\"textinput\" type=\"text\" class=\"form-control input-md name-field\" placeholder=\"Name\"><\/div>\n                    <div class=\"col-xs-6\"><div class=\"input-group\"> <span class=\"input-group-addon\">$<\/span>\n                      <input id=\"prependedtext\" name=\"prependedtext\" class=\"form-control salary-field\" placeholder=\"Salary\" type=\"password\"> \n                      <span class=\"input-group-btn\">\n                        <button class=\"btn btn-danger\" type=\"button\" onclick=\"removeParticipantRow('+num+')\">-<\/button>\n                      <\/span>\n                    <\/div>\n                  <\/div>\n                <\/div>';
+
   // Add listeners to the newly created fields.
   addParticipantListener(newRow.children[0].children[0].children[0], newRow.children[0].children[1].children[0].children[1]);
-  
+
   ni.appendChild(newRow);
-  
+
   // Since we've added a row, we can allow other rows to be deleted with the
   // remove button.
   if(document.getElementsByClassName("participant-row").length > 1)
@@ -117,8 +117,8 @@ function removeParticipantRow(rowNum)
   var rows = document.getElementsByClassName("form-group");
   if(rows.length != 1)
   {
-    document.getElementById('participant-table').removeChild(document.getElementById("row"+rowNum) ); 
-    
+    document.getElementById('participant-table').removeChild(document.getElementById("row"+rowNum) );
+
     if(rows.length == 1)
     {
       document.getElementsByClassName("remove")[0].setAttribute('class', "remove-no");
@@ -136,7 +136,16 @@ function resetClicked()
 {
   resetTimer();
   totalSpent = 0;
-  updateCostDisplay();
+
+  // Reset the cost display to $0.00
+  setCostDisplay(0);
+}
+
+// Set the value of the cost display.
+function setCostDisplay(cost)
+{
+  document.getElementById("cost-display").innerHTML =
+    "$" + cost.toFixed(2);
 }
 
 // Update the cost display.
@@ -148,11 +157,11 @@ function updateCostDisplay()
   // that to simply add on the cost of this second to the grand (global) total.
   // This allows us to keep track of the total cost of the meeting, even when
   // people come and go.
-  
+
   var spentThisSecond = 0;
   var nameFields = document.getElementsByClassName("name-field");
   var salaryFields = document.getElementsByClassName("salary-field");
-  
+
   if(nameFields.length > 0)
   {
     for(var i = 0; i < nameFields.length; i++)
@@ -161,12 +170,11 @@ function updateCostDisplay()
       {
         spentThisSecond += (salaryFields[i].value / 31449600);
       }
-    }    
+    }
   }
   totalSpent += spentThisSecond;
-  
-  document.getElementById("cost-display").innerHTML =
-    "$" + totalSpent.toFixed(2);
+
+  setCostDisplay(totalSpent);
 }
 
 // Create the timerEvent listener so we know when to update the cost.
