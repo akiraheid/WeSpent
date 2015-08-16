@@ -47,7 +47,7 @@
                     <input id="textinput" name="textinput" type="text" class="form-control input-md name-field" placeholder="Name"></div>
                     <div class="col-xs-6"><div class="input-group">
                       <span class="input-group-addon">$</span>
-                      <input id="prependedtext" name="prependedtext" class="form-control salary-field" placeholder="Salary" type="password">
+                      <input id="prependedtext" name="prependedtext" class="form-control salary-field" placeholder="Salary" type="password" onkeyup="ensureNumOnly(this)">
                       <span class="input-group-btn">
                         <button class="btn btn-danger" type="button" onclick="removeParticipantRow(0)">-</button>
                       </span>

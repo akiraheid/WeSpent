@@ -6,6 +6,20 @@
 var totalSpent = 0;
 // ============================================================================
 
+
+// Ensure that keyboard inputs are numbers only.
+// Originally from
+// https://stackoverflow.com/questions/3764821/best-way-to-restrict-a-text-field-to-numbers-only
+//
+// input The input sring to check.
+function ensureNumOnly(input)
+{
+  var invalidChars = /[^0-9]/gi
+  if(invalidChars.test(input.value)) {
+    input.value = input.value.replace(invalidChars,"");
+  }
+}
+
 // Check whether or not we should add another participant row. If we've filled
 // all the available rows (both name and salary fields), then add another row.
 function checkAddRow()
@@ -113,7 +127,6 @@ function addParticipantRow()
 // rowNum  The row ID number to delete.
 function removeParticipantRow(rowNum)
 {
-  console.log("Row is " + rowNum)
   var rows = document.getElementsByClassName("form-group");
   if(rows.length != 1)
   {
