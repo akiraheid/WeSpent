@@ -18,7 +18,7 @@ function updateTimerDisplay()
   var _hour = Math.floor(seconds / 3600);
   var _minute = Math.floor(seconds / 60) % 60;
   var _second = Math.floor(seconds % 60);
-  
+
   document.getElementById("timer-display").innerHTML =
     ((_hour < 10) ? ('0' + _hour).slice(-2) :_hour) + ":"
     + ((_minute < 10) ? ('0' + _minute).slice(-2) : _minute) + ":"
