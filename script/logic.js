@@ -106,7 +106,7 @@ function addParticipantRow()
   newRow.setAttribute('class', "form-group");
   newRow.setAttribute('id', "row" + num);
 
-  newRow.innerHTML = '                <div class="row">\n                  <div class="col-xs-6">\n                    <input id=\"textinput\" name=\"textinput\" type=\"text\" class=\"form-control input-md name-field\" placeholder=\"Name\"><\/div>\n                    <div class=\"col-xs-6\"><div class=\"input-group\"> <span class=\"input-group-addon\">$<\/span>\n                      <input id=\"prependedtext\" name=\"prependedtext\" class=\"form-control salary-field\" placeholder=\"Salary\" type=\"password\"> \n                      <span class=\"input-group-btn\">\n                        <button class=\"btn btn-danger\" type=\"button\" onclick=\"removeParticipantRow('+num+')\">-<\/button>\n                      <\/span>\n                    <\/div>\n                  <\/div>\n                <\/div>';
+  newRow.innerHTML = '                <div class="row">\n                  <div class="col-xs-6">\n                    <input id=\"textinput\" name=\"textinput\" type=\"text\" class=\"form-control input-md name-field\" placeholder=\"Name\"><\/div>\n                    <div class=\"col-xs-6\"><div class=\"input-group\"> <span class=\"input-group-addon\">$<\/span>\n                      <input id=\"prependedtext\" name=\"prependedtext\" class=\"form-control salary-field\" placeholder=\"Salary\" type=\"password\" ondrop=\"return false;\" onkeyup=\"ensureNumOnly(this)\"> \n                      <span class=\"input-group-btn\">\n                        <button class=\"btn btn-danger\" type=\"button\" onclick=\"removeParticipantRow('+num+')\">-<\/button>\n                      <\/span>\n                    <\/div>\n                  <\/div>\n                <\/div>';
 
   // Add listeners to the newly created fields.
   addParticipantListener(newRow.children[0].children[0].children[0], newRow.children[0].children[1].children[0].children[1]);
@@ -198,8 +198,7 @@ function createTimerListener()
 
 // Function to initialize the page.
 function init(){
-  addParticipantListener(document.getElementsByClassName("name-field")[0],
-      document.getElementsByClassName("salary-field")[0]);
+  addParticipantRow();
   createTimerListener();
 }
 
